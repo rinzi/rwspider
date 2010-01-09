@@ -1,0 +1,55 @@
+= RW Spider
+
+RW Spider is an multithreading spider client written in Ruby. 
+The library was designed to make easy the development of programs that spider the web.
+
+RW Spider design comes from the direct experiences of the development of another PHP library that is currently used as the engine for an freeware SEO tool.
+
+== Features
+
+* Multithreading spider
+* Customizable options for the spider job
+* Robots.txt support
+* Indexing of web pages and others files (images, CSS, JavaScript, PDF and more)
+* Following redirects
+
+== Requirements
+
+* Ruby >= 1.8.7
+* Hpricot >= 0.8.2
+* Robotstxt >= 0.5.2
+ 
+
+
+== Installation
+
+This library is intended to be installed via the
+Gemcutter[http://gemcutter.org] system.
+
+  $ gem install rwspider
+
+You might need administrator privileges on your system to install it.
+
+
+
+== Author
+
+Author:: {Simone Rinzivillo}[http://www.simonerinzivillo.it/] <srinzivillo@gmail.com>
+
+
+== Resources
+
+* {Homepage}[http://www.rwspider.com/]
+* {Author}[http://www.simonerinzivillo.it/]
+* {GitHub}[http://github.com/rinzi/rwspider/]
+
+
+== Changelog
+
+See the CHANGELOG.rdoc file for details. 
+
+
+== License
+
+Copyright (c) 2009 Simone Rinzivillo, Robotstxt is released under the MIT license.
+
