@@ -15,7 +15,6 @@
 
 require 'uri/generic'
 require 'hpricot'
-require 'rwspider/errors'
 
 module Rwspider
 	class Document 
@@ -83,8 +82,6 @@ module Rwspider
   # Returns <tt>nil</tt> if the <tt>content-type</tt> returned in the <tt>http_response</tt> attribute
 	# was different from 'text/html'. 
 	#
-	# Raise an Rwspider::UrlParserError error when the method hasn't been able to parse all URLs. 
-	#
 		def get_links()
 			get_document(@tag_type[0])
 		end	
@@ -101,12 +98,10 @@ module Rwspider
   # Returns <tt>nil</tt> if the <tt>content-type</tt> returned in the <tt>http_response</tt> attribute
 	# was different from 'text/html'. 
 	#
-	# Raise an Rwspider::UrlParserError error when the method hasn't been able to parse all URLs. 
-	#
-
 		def get_images()
 			get_document(@tag_type[1])
-		end		
+		end	
+			
 	# Analyze the HTML code of the current Rwspider::Document to extract the links at other files
 	# as javascript and css.
   #
@@ -119,8 +114,6 @@ module Rwspider
 	# and append the Array at the documents attribute.
   # Returns <tt>nil</tt> if the <tt>content-type</tt> returned in the <tt>http_response</tt> attribute
 	# was different from 'text/html'. 
-	#
-	# Raise an Rwspider::UrlParserError error when the method hasn't been able to parse all URLs. 
 	#			
 		def get_other_files() 
 			get_document(@tag_type[2])
@@ -130,11 +123,8 @@ module Rwspider
   #
   #  doc = Rwspider::Document::new('http://www.rwspider.com')
 	#  doc.normalize_url(URI.parse('/sitemap.html'))
-	#
-	# Raise an Rwspider::UrlNormalizeError error when the method hasn't been able to normalize the URL. 
 	# 
 		def normalize_url(var)
-		begin
 			querystring = (!var.query.nil?) ? '?' + var.query : ''
 			if  var.scheme.nil? || (var.scheme.downcase != "mailto" && var.scheme != "javascript")
 				if var.relative?
@@ -156,16 +146,12 @@ module Rwspider
 			end
 			
 			return path
-			rescue Exception => e
-			  raise UrlNormalizeError, 'Unable to normalize the URL '+ var.to_s
-			end
 		end
 		
 		private
 		
 		def get_document(tag)
-			if !@http_response.nil? && @http_response.content_type == 'text/html' 
-				begin
+		  return unless !@http_response.nil? && @http_response.content_type == 'text/html' 
 					sourcecode = Hpricot(@http_response.body)
 					lnks = sourcecode.search("//" + tag[0])
 					docs = []
@@ -188,10 +174,6 @@ module Rwspider
 					}
 					@documents = @documents + docs
 					docs
-					rescue Exception => e
-					raise UrlParserError, 'Unable to parse the URL ' + url
-				end
-			end
 		end
 		
 

@@ -13,7 +13,7 @@
 #
 #++
 
-require 'rubygems'
+
 require 'net/http'
 require 'openssl'
 require 'uri'
@@ -21,7 +21,6 @@ require 'robotstxt'
 require 'rwspider/document'
 require 'rwspider/queue'
 require 'rwspider/version'
-require 'rwspider/errors'
 require 'hpricot'
 
 
@@ -146,7 +145,7 @@ module Rwspider
 								
 								end
 							}
-						rescue Exception => e
+						rescue StandardError => e
 								link.as_downloaded = false
 								yield link if block_given?								
 						end
