@@ -51,5 +51,5 @@ See the CHANGELOG.rdoc file for details.
 
 == License
 
-Copyright (c) 2009 Simone Rinzivillo, Robotstxt is released under the MIT license.
+Copyright (c) 2009 Simone Rinzivillo, RW Spider is released under the MIT license.
 
