@@ -1,14 +1,13 @@
 Changelog.rdoc
 LICENSE.rdoc
-Manifest
 README.rdoc
 Rakefile
 lib/rwspider.rb
 lib/rwspider/client.rb
 lib/rwspider/document.rb
-lib/rwspider/errors.rb
 lib/rwspider/queue.rb
 lib/rwspider/version.rb
 test/client_test.rb
 test/document_test.rb
 test/rwspider_test.rb
+Manifest

@@ -124,8 +124,6 @@ module Rwspider
 								link.as_downloaded = true
 								link.http_response = response
 								
-								yield link if block_given?
-								
 								case response
 									when Net::HTTPSuccess then
 									
@@ -145,10 +143,12 @@ module Rwspider
 								
 								end
 							}
+						rescue Timeout::Error => e
+								link.as_downloaded = false
 						rescue StandardError => e
 								link.as_downloaded = false
-								yield link if block_given?								
 						end
+						yield link if block_given?
 					} 
 					t.join					
 				end

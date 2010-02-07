@@ -18,7 +18,7 @@ module Rwspider
 	module Version
     MAJOR = 0
     MINOR = 4
-    TINY = 2
+    TINY = 3
     ALPHA = nil
  
     STRING = [MAJOR, MINOR, TINY, ALPHA].compact.join('.')
